@@ -8,7 +8,7 @@ export default function RootLayout() {
       <header>
         <TopNavbar />
       </header>
-      <main>
+      <main className="vh-height">
         <Outlet />
       </main>
       <footer>

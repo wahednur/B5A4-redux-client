@@ -100,7 +100,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 dark:text-gray-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   About{" "}
@@ -111,7 +111,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 dark:text-gray-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Features{" "}
@@ -122,7 +122,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 dark:text-gray-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Works{" "}
@@ -133,7 +133,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 dark:text-gray-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Career{" "}
@@ -152,7 +152,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 dark:text-gray-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Customer Support{" "}
@@ -163,7 +163,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 dark:text-gray-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Delivery Details{" "}
@@ -174,7 +174,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 dark:text-gray-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Terms & Conditions{" "}
@@ -185,7 +185,7 @@ const Footer = () => {
                 <a
                   href="#"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 dark:text-gray-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Privacy Policy{" "}
