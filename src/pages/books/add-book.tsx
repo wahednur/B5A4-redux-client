@@ -17,7 +17,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../components/ui/select";
-import { Textarea } from "../../components/ui/textarea";
 import { useCreateBookMutation } from "../../redux/api/baseApi";
 import type { IBook, IGenre } from "../../types/Types";
 
@@ -90,7 +89,7 @@ export default function AddBook() {
             name="genre"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Genre</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
@@ -123,24 +122,6 @@ export default function AddBook() {
                   <Input
                     type="number"
                     placeholder="Enter Book Copies"
-                    {...field}
-                  />
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="description"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Description</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder="Enter book details"
-                    className="resize-none"
                     {...field}
                   />
                 </FormControl>

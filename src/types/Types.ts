@@ -6,6 +6,7 @@ export type IGenre =
   | "BIOGRAPHY"
   | "FANTASY";
 export interface IBook {
+  _id: string;
   title: string;
   author: string;
   genre: IGenre;
