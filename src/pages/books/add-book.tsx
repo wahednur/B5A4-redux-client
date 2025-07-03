@@ -8,6 +8,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { extractErrorMessages } from "@/utils/errorExtractor";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import {
@@ -19,7 +20,6 @@ import {
 } from "../../components/ui/select";
 import { useCreateBookMutation } from "../../redux/api/baseApi";
 import type { IBook, IGenre } from "../../types/Types";
-
 const genres: IGenre[] = [
   "FICTION",
   "NON_FICTION",
@@ -32,10 +32,14 @@ export default function AddBook() {
   const form = useForm();
   const [createBook] = useCreateBookMutation();
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const res = await createBook(data as IBook);
-    form.reset();
-    console.log(res);
-    toast.success(`${data.title} Book created successfully`);
+    try {
+      const res = await createBook(data as IBook).unwrap();
+      toast.success(`${res?.data?.title || data.title} created successfully`);
+      form.reset();
+    } catch (error) {
+      const errors = extractErrorMessages(error);
+      errors.forEach((err) => toast.error(err)); // ✅ Show all errors via toast
+    }
   };
   return (
     <div className="container dark:bg-gray-900 dark:text-gray-200 text-gray-700 mt p-5 rounded-md">

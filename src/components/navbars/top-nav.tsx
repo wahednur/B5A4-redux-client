@@ -20,7 +20,15 @@ export default function TopNavbar() {
             <NavLink to="/create-book">Add Book</NavLink>
           </li>
           <li>
-            <NavLink to="/borrow">Borrow</NavLink>
+            <NavLink
+              to="/borrow-summary"
+              className="px-4 py-2 hover:text-blue-600"
+            >
+              Borrow Summary
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/add-borrow">Add Borrow</NavLink>
           </li>
         </ul>
         <div>

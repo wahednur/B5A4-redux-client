@@ -11,7 +11,7 @@ export interface IBook {
   author: string;
   genre: IGenre;
   isbn: string;
-  description?: string;
+  description: string;
   copies: number;
   available?: boolean;
 }

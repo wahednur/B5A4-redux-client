@@ -1,5 +1,6 @@
 import { Pencil, Trash2 } from "lucide-react";
 import { Link } from "react-router";
+import { ScaleLoader } from "react-spinners";
 import Swal from "sweetalert2";
 import { Button } from "../../components/ui/button";
 import {
@@ -49,7 +50,12 @@ export default function Books() {
       }
     });
   };
-  if (isLoading) return <p>Loading .....</p>;
+  if (isLoading)
+    return (
+      <div className="w-full min-h-svh flex justify-center items-center">
+        <ScaleLoader color="#1df9de" />
+      </div>
+    );
   console.log(booksData);
   return (
     <div>
@@ -62,10 +68,10 @@ export default function Books() {
                 <TableHead className="w-[100px]">Title</TableHead>
                 <TableHead>Author</TableHead>
                 <TableHead>Genre</TableHead>
-                <TableHead className="text-right">ISBN</TableHead>
-                <TableHead className="text-right">Copies</TableHead>
-                <TableHead className="text-right">Availability</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
+                <TableHead>ISBN</TableHead>
+                <TableHead>Copies</TableHead>
+                <TableHead>Availability</TableHead>
+                <TableHead>Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>

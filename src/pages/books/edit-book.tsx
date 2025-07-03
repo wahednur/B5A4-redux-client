@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { useEffect } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { useParams } from "react-router";
+import { toast } from "sonner";
 import {
   Select,
   SelectContent,
@@ -47,7 +48,7 @@ export default function EditBook() {
         id,
         body: data,
       }).unwrap();
-      console.log("Update successful:", result);
+      toast.success(`Updated book successfully`);
     } catch (err) {
       console.error("Update failed:", err);
     }
