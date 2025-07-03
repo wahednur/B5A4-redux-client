@@ -1,4 +1,5 @@
 import { Pencil, Trash2 } from "lucide-react";
+import Swal from "sweetalert2";
 import { Button } from "../../components/ui/button";
 import {
   Table,
@@ -8,9 +9,11 @@ import {
   TableHeader,
   TableRow,
 } from "../../components/ui/table";
-import { useGetBooksQuery } from "../../redux/api/baseApi";
+import {
+  useDeleteBookMutation,
+  useGetBooksQuery,
+} from "../../redux/api/baseApi";
 import type { IBook } from "../../types/Types";
-
 export default function Books() {
   const { data, isLoading, isError } = useGetBooksQuery(undefined, {
     pollingInterval: 30000,
@@ -18,7 +21,33 @@ export default function Books() {
     refetchOnMountOrArgChange: true,
     refetchOnReconnect: true,
   });
+  const [deleteBook] = useDeleteBookMutation();
   const booksData = data;
+  const handleDelete = async (id: string) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await deleteBook(id).unwrap();
+          Swal.fire("Deleted!", "Your item has been deleted.", "success");
+        } catch (error) {
+          Swal.fire("Error!", "Something went wrong.", "error");
+        }
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+      }
+    });
+  };
   if (isLoading) return <p>Loading .....</p>;
   console.log(booksData);
   return (
@@ -47,13 +76,16 @@ export default function Books() {
                   <TableCell>{book?.isbn}</TableCell>
                   <TableCell>{book?.copies}</TableCell>
                   <TableCell>
-                    {book?.available ? "Available" : "Out of Stock"}
+                    {book?.copies > 0 ? "Available" : "Unavailable"}
                   </TableCell>
                   <TableCell className="flex gap-2 text-white">
                     <Button className="bg-blue-500 cursor-pointer text-white hover:text-gray-600">
                       <Pencil />
                     </Button>
-                    <Button className="bg-red-500 cursor-pointer text-white hover:text-gray-600">
+                    <Button
+                      onClick={() => handleDelete(book?._id)}
+                      className="bg-red-500 cursor-pointer text-white hover:text-gray-600"
+                    >
                       <Trash2 />
                     </Button>
                   </TableCell>
