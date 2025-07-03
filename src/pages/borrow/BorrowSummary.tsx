@@ -18,7 +18,7 @@ export default function BorrowSummary() {
   const summary = data?.data || [];
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mt py-10 bg-white/10 rounded-2xl">
       <h1 className="text-3xl font-bold text-center mb-8">📚 Borrow Summary</h1>
 
       <div>
