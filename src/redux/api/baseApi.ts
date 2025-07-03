@@ -1,3 +1,10 @@
+interface IBookQueryParams {
+  page?: number;
+  limit?: number;
+  sortBy?: string;
+  sort?: "asc" | "desc";
+}
+
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const apiUrl: string = import.meta.env.VITE_SERVER_URL;
@@ -6,7 +13,7 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: apiUrl }),
   tagTypes: ["books", "borrow"],
   endpoints: (builder) => ({
-    getBooks: builder.query({
+    getBooks: builder.query<any, IBookQueryParams>({
       query: ({
         page = 1,
         limit = 9,
