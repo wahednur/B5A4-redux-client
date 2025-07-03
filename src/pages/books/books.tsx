@@ -1,4 +1,5 @@
 import { Pencil, Trash2 } from "lucide-react";
+import { Link } from "react-router";
 import Swal from "sweetalert2";
 import { Button } from "../../components/ui/button";
 import {
@@ -79,9 +80,12 @@ export default function Books() {
                     {book?.copies > 0 ? "Available" : "Unavailable"}
                   </TableCell>
                   <TableCell className="flex gap-2 text-white">
-                    <Button className="bg-blue-500 cursor-pointer text-white hover:text-gray-600">
+                    <Link
+                      to={`/books/edit-book/${book?._id}`}
+                      className="bg-blue-500 cursor-pointer text-white hover:text-gray-600 flex justify-center hover:bg-white items-center w-10 h-9 rounded-md"
+                    >
                       <Pencil />
-                    </Button>
+                    </Link>
                     <Button
                       onClick={() => handleDelete(book?._id)}
                       className="bg-red-500 cursor-pointer text-white hover:text-gray-600"
