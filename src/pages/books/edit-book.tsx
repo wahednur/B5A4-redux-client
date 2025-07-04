@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -19,6 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../components/ui/select";
+import { Textarea } from "../../components/ui/textarea";
 import {
   useGetBookByIdQuery,
   useUpdateBookMutation,
@@ -48,7 +50,7 @@ export default function EditBook() {
         id,
         body: data,
       }).unwrap();
-      toast.success(`Updated book successfully`);
+      toast.success(`Updated book successfully`, result);
     } catch (err) {
       console.error("Update failed:", err);
     }
@@ -61,6 +63,7 @@ export default function EditBook() {
         isbn: book.isbn,
         genre: book.genre,
         copies: book.copies,
+        description: book.description,
       });
     }
   }, [book, form]);
@@ -168,6 +171,24 @@ export default function EditBook() {
                   />
                 </FormControl>
 
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Description</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Tell us a little bit about yourself"
+                    className="resize-none"
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription></FormDescription>
                 <FormMessage />
               </FormItem>
             )}

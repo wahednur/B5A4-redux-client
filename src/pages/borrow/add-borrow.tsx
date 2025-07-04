@@ -44,7 +44,7 @@ export default function AddBorrow() {
       };
 
       const res = await borrowBook(borrowData).unwrap();
-      toast.success(`${book.title} borrowed successfully`);
+      toast.success(`${book.title} borrowed successfully`, res);
       form.reset();
     } catch (error: any) {
       const msg =
@@ -146,6 +146,7 @@ export default function AddBorrow() {
                     </FormItem>
                   )}
                 />
+
                 <Button type="submit">Borrow Book</Button>
               </form>
             </Form>

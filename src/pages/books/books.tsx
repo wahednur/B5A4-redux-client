@@ -17,7 +17,7 @@ import {
 } from "../../redux/api/baseApi";
 import type { IBook } from "../../types/Types";
 export default function Books() {
-  const { data, isLoading, isError } = useGetBooksQuery(undefined, {
+  const { data, isLoading } = useGetBooksQuery(undefined!, {
     pollingInterval: 30000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
