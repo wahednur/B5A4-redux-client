@@ -10,7 +10,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const apiUrl: string = import.meta.env.VITE_SERVER_URL;
 export const baseApi = createApi({
   reducerPath: "baseApi",
-  baseQuery: fetchBaseQuery({ baseUrl: apiUrl }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: apiUrl || "https://ws-lms-server.vercel.app/api",
+  }),
   tagTypes: ["books", "borrow"],
   endpoints: (builder) => ({
     getBooks: builder.query<any, IBookQueryParams>({
